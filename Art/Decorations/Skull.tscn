@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://4nnseixpcn3g"]
+
+[ext_resource type="PackedScene" uid="uid://dgdtf17q5l8j2" path="res://Materials/Decorations/Skull/skull.fbx" id="1_qhawl"]
+[ext_resource type="Texture2D" uid="uid://73rm1xo1d6a7" path="res://Materials/Decorations/Skull/low_Default_BaseColor.png" id="2_44vm3"]
+[ext_resource type="Texture2D" uid="uid://w1b1qh388jx7" path="res://Materials/Decorations/Skull/low_Default_Height.png" id="3_gx15f"]
+[ext_resource type="Texture2D" uid="uid://v0ndc2i8a517" path="res://Materials/Decorations/Skull/low_Default_Metallic.png" id="4_goy70"]
+[ext_resource type="Texture2D" uid="uid://d328cqjrp2f81" path="res://Materials/Decorations/Skull/low_Default_Normal.png" id="5_ydfc7"]
+[ext_resource type="Texture2D" uid="uid://c1qgdeqo7i3vm" path="res://Materials/Decorations/Skull/low_Default_Roughness.png" id="6_nppbk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qhawl"]
+albedo_texture = ExtResource("2_44vm3")
+metallic = 1.0
+metallic_texture = ExtResource("4_goy70")
+roughness_texture = ExtResource("6_nppbk")
+normal_enabled = true
+normal_texture = ExtResource("5_ydfc7")
+heightmap_enabled = true
+heightmap_texture = ExtResource("3_gx15f")
+
+[node name="Skull" unique_id=1771267842 instance=ExtResource("1_qhawl")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -0.012079895, 0)
+
+[node name="skull" parent="." index="0" unique_id=1793555628]
+material_override = SubResource("StandardMaterial3D_qhawl")

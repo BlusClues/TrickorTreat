@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://c28odqqbbuqb2"]
+
+[ext_resource type="PackedScene" uid="uid://bosku8vg0awwg" path="res://Materials/Street Light/Street_Light_Pole.blend" id="1_0ii1c"]
+[ext_resource type="Texture2D" uid="uid://cpukiiajyt6t4" path="res://Materials/Street Light/Detalhes.png" id="2_aqb1v"]
+[ext_resource type="Texture2D" uid="uid://cgvaobn67ik7o" path="res://Materials/Street Light/Poste.png" id="3_4fi38"]
+[ext_resource type="Texture2D" uid="uid://0cphe42yiv7y" path="res://Materials/Street Light/Bojo.png" id="4_cv4gp"]
+[ext_resource type="Texture2D" uid="uid://buyonok8cj0kx" path="res://Materials/Street Light/Lampada.png" id="5_4sx6s"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0a55a"]
+albedo_texture = ExtResource("2_aqb1v")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5c5nf"]
+albedo_texture = ExtResource("3_4fi38")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uhqj8"]
+albedo_texture = ExtResource("4_cv4gp")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yde82"]
+albedo_texture = ExtResource("5_4sx6s")
+
+[node name="StreetLight" unique_id=392874260 instance=ExtResource("1_0ii1c")]
+
+[node name="Camera" parent="." index="0" unique_id=1910371094]
+visible = false
+
+[node name="Plane" parent="." index="1" unique_id=819947644]
+visible = false
+
+[node name="Point" parent="." index="2" unique_id=1977291362]
+light_color = Color(1, 0.74509805, 0.50980395, 1)
+light_energy = 10.639
+
+[node name="Detalhes" parent="." index="3" unique_id=387904231]
+material_override = SubResource("StandardMaterial3D_0a55a")
+
+[node name="Poste" parent="Detalhes" index="0" unique_id=264840161]
+material_override = SubResource("StandardMaterial3D_5c5nf")
+
+[node name="Bojo" parent="Detalhes/Poste" index="0" unique_id=1236771426]
+material_override = SubResource("StandardMaterial3D_uhqj8")
+
+[node name="Lampada" parent="Detalhes/Poste" index="1" unique_id=1822596006]
+material_override = SubResource("StandardMaterial3D_yde82")

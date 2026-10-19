@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c35gckwfqc8dq"]
+
+[ext_resource type="Texture2D" uid="uid://dud2f35anmqhc" path="res://Materials/Street/CityStreetAsphaltGenericClean001_COL_2K.jpg" id="1_pk7jl"]
+[ext_resource type="Texture2D" uid="uid://c4ht34kdj87vx" path="res://Materials/Street/CityStreetAsphaltGenericClean001_AO_2K.jpg" id="2_65066"]
+[ext_resource type="Texture2D" uid="uid://b6mfabh16je3i" path="res://Materials/Street/CityStreetAsphaltGenericClean001_DISP_2K.jpg" id="3_q3wuj"]
+[ext_resource type="Texture2D" uid="uid://ci106f6js8guq" path="res://Materials/Street/CityStreetAsphaltGenericClean001_NRM_2K.jpg" id="4_qw7lw"]
+
+[resource]
+albedo_texture = ExtResource("1_pk7jl")
+normal_enabled = true
+normal_texture = ExtResource("4_qw7lw")
+ao_enabled = true
+ao_texture = ExtResource("2_65066")
+heightmap_enabled = true
+heightmap_scale = 1.0
+heightmap_texture = ExtResource("3_q3wuj")
+uv1_scale = Vector3(25, 10, 10)

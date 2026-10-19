@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://b38sinaurv84o"]
+
+[ext_resource type="PackedScene" uid="uid://hi0kkwrpmbkb" path="res://Materials/Decorations/Pumpkins/SM_Prop_Pumpkin_Lanturn_02.fbx" id="1_s4abn"]
+[ext_resource type="Texture2D" uid="uid://ctdk56xsmss46" path="res://Materials/Decorations/Pumpkins/POLYGON_Pumpkin_Tex.png" id="2_t1joq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gai3f"]
+albedo_texture = ExtResource("2_t1joq")
+
+[node name="Pumpkin2" unique_id=1386364639 instance=ExtResource("1_s4abn")]
+
+[node name="SM_Prop_Pumpkin_Lanturn_02" parent="." index="0" unique_id=1343371717]
+transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_gai3f")

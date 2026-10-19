@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cuwnm0kir50ap"]
+
+[ext_resource type="PackedScene" uid="uid://btjftnqy3uyj3" path="res://Materials/Decorations/Blood/blood_stain.fbx" id="1_f0xcc"]
+[ext_resource type="Material" uid="uid://cjxe6dxucgtcs" path="res://Materials/Decorations/Blood/Blood.tres" id="2_t0jtr"]
+
+[node name="BloodStain" unique_id=271151396 instance=ExtResource("1_f0xcc")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+
+[node name="blood_droplets" parent="." index="0" unique_id=1671013037]
+material_override = ExtResource("2_t0jtr")
+
+[node name="blood_liquid" parent="." index="1" unique_id=699161644]
+material_override = ExtResource("2_t0jtr")

@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://cjx85wig80opt"]
+
+[ext_resource type="PackedScene" uid="uid://b1oo0wom0sdsp" path="res://Scenes/Player.tscn" id="2_tcpt8"]
+[ext_resource type="PackedScene" uid="uid://cugknsn0esml5" path="res://Art/Decorations/Pumpkins/Pumpkin1.tscn" id="5_v1iyc"]
+[ext_resource type="PackedScene" uid="uid://b38sinaurv84o" path="res://Art/Decorations/Pumpkins/Pumpkin2.tscn" id="6_1u2j8"]
+[ext_resource type="PackedScene" uid="uid://cuwnm0kir50ap" path="res://Art/Decorations/Blood.tscn" id="6_v1iyc"]
+[ext_resource type="PackedScene" uid="uid://4nnseixpcn3g" path="res://Art/Decorations/Skull.tscn" id="7_1u2j8"]
+[ext_resource type="Script" uid="uid://wtew3usmo76" path="res://Scripts/RoadGenerator.gd" id="13_tcpt8"]
+[ext_resource type="PackedScene" uid="uid://d22pjn6cr7n0c" path="res://Art/tree.glb" id="17_6fvla"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kpbgp"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_7iaks"]
+sky_material = SubResource("ProceduralSkyMaterial_kpbgp")
+
+[sub_resource type="Environment" id="Environment_hno7y"]
+background_mode = 2
+sky = SubResource("Sky_7iaks")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wne8h"]
+albedo_color = Color(0.35726002, 0.49760896, 0.009832149, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wne8h"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_wne8h"]
+data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+
+[node name="Node3D" type="Node3D" unique_id=683032592]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=330769585]
+environment = SubResource("Environment_hno7y")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=352635518]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+visible = false
+shadow_enabled = true
+
+[node name="Plane" type="MeshInstance3D" parent="." unique_id=126746878]
+transform = Transform3D(1000, 0, 0, 0, 1000, 0, 0, 0, 1000, 0, -0.05, 0)
+material_override = SubResource("StandardMaterial3D_wne8h")
+mesh = SubResource("PlaneMesh_wne8h")
+metadata/_edit_lock_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Plane" unique_id=310965646]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plane/StaticBody3D" unique_id=1694720650]
+shape = SubResource("ConcavePolygonShape3D_wne8h")
+
+[node name="Player" parent="." unique_id=721976401 instance=ExtResource("2_tcpt8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1375165, 0)
+
+[node name="RoadGenerator" type="Node3D" parent="." unique_id=1390709308]
+script = ExtResource("13_tcpt8")
+metadata/_edit_lock_ = true
+
+[node name="tree2" parent="." unique_id=1957395871 instance=ExtResource("17_6fvla")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.712526, 6.5357466, -1.506925)
+
+[node name="Pumpkin1" parent="." unique_id=1890786804 instance=ExtResource("5_v1iyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.816025, 0.62508106, 5.0567064)
+
+[node name="Pumpkin2" parent="." unique_id=1386364639 instance=ExtResource("6_1u2j8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.369221, -0.050001144, -0.39834)
+
+[node name="BloodStain" parent="." unique_id=271151396 instance=ExtResource("6_v1iyc")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, -1.2624297, -0.04992978, 6.8128443)
+
+[node name="Skull" parent="." unique_id=1771267842 instance=ExtResource("7_1u2j8")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -4, -0.012079895, 4)
