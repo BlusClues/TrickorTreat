@@ -63,8 +63,9 @@ func _physics_process(delta: float) -> void:
 func _on_house_got_tricked(house) -> void:
 	print("its working!!!!!!!!!!!!     Got tricker I guess")
 
-func _on_house_got_candy(house) -> void:
+func _on_house_got_candy(house, amount_given) -> void:
 	print("GOT CANDY DAWG NM      its working!!!!!!!!!!!!")
-	candy_amount += 1
+	candy_amount += amount_given
 	candy_increased.emit(candy_amount)
 	print(candy_amount)
+	print(amount_given)

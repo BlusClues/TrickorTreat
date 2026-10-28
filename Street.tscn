@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b38sinaurv84o" path="res://Art/Decorations/Pumpkins/Pumpkin2.tscn" id="6_1u2j8"]
 [ext_resource type="PackedScene" uid="uid://cuwnm0kir50ap" path="res://Art/Decorations/Blood.tscn" id="6_v1iyc"]
 [ext_resource type="PackedScene" uid="uid://4nnseixpcn3g" path="res://Art/Decorations/Skull.tscn" id="7_1u2j8"]
-[ext_resource type="PackedScene" uid="uid://dqyosjh3lyaw4" path="res://HUD.tscn" id="8_r4x5s"]
+[ext_resource type="PackedScene" uid="uid://dqyosjh3lyaw4" path="res://Scenes/HUD.tscn" id="8_r4x5s"]
 [ext_resource type="Script" uid="uid://wtew3usmo76" path="res://Scripts/RoadGenerator.gd" id="13_tcpt8"]
 [ext_resource type="PackedScene" uid="uid://d22pjn6cr7n0c" path="res://Art/tree.glb" id="17_6fvla"]
 

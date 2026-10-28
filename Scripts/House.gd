@@ -1,11 +1,15 @@
 extends Node3D
 
 @onready var knock_trigger = $KnockTrigger
+# @onready var candy_curve = preload("res://CandyCurve.tres")
 
 var knocked: bool = false
 var player_in_range: bool = false
 var scariness: float = 0.0
 
+const MIN_CANDY = 1
+const MAX_CANDY = 5
+const CANDY_SPREAD = 0.8
 
 # connect the functions to each of the houses
 func _ready() -> void:
@@ -22,22 +26,23 @@ func _unhandled_input(event: InputEvent) -> void:
 			knocked_at_door()
 
 
+# Checking what happens at the door when you knock
 func knocked_at_door():
 	if knocked:
-		# print("You FUCKING knocked?")
-		# print(scariness)
 		if scariness > 0.5:
 			if randf() < scariness:
-				# print("You were tricked. Now your dead!")
 				GameManager.got_tricked.emit(self)
 			else:
-				# print("Your safe")
-				GameManager.got_candy.emit(self)
+				GameManager.got_candy.emit(self, calc_candy_amount())
 		else:
-			# print("Your safe")
-			GameManager.got_candy.emit(self)
+			GameManager.got_candy.emit(self, calc_candy_amount())
 
 
+# calculate the amount of candy each house gives
+func calc_candy_amount() -> int:
+	var target = lerpf(MIN_CANDY, MAX_CANDY, clampf(scariness, 0.0, 1.0))
+	var amount = roundi(randfn(target, CANDY_SPREAD))
+	return clampi(amount, MIN_CANDY, MAX_CANDY)
 
 # check if the player has entered the door range
 func _on_knock_trigger_body_entered(body: Node3D) -> void:
