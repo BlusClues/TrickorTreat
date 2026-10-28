@@ -18,7 +18,7 @@ extends Node3D
 @export var map_size = 120.0 # houses before the pattern repeats
 @export var max_frequency = 60
 @export var noise_exponent = 0.5 # -1 red, -0.5 pink, 0 white, 0.5 blue, 1 violet
-@export var run_test = true
+@export var run_test = false
 @export var save_strips = false
 
 var render_distance 
@@ -114,6 +114,7 @@ func spawn_object():
 		var global_index = new_road.id * spots.size() + spot_index
 		var house_scariness = blue_scariness(global_index)
 		current_house_list.append(house_scariness)
+		new_house.scariness = house_scariness
 		print("house ", global_index, " scariness: ", house_scariness)
 		
 		var allowed_list = get_allowed_decor(house_scariness)
@@ -233,6 +234,10 @@ func _on_road_current_road_id(current_id: int) -> void:
 	last_collided_road_id = current_id
 
 
+
+
+
+## Tests for PCG Assignment
 # function to run test to show comparisons for paper analysis
 func run_noise_test(num_seeds : int = 200, scary_cutoff : float = 0.7) -> void:
 	# remember the real settings so the test doesn't change the game

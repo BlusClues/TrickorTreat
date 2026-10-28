@@ -4,9 +4,17 @@ extends CharacterBody3D
 @onready var camera := $Neck/Camera3D
 
 var sprint_speed = 1
+var candy_amount = 0
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 10 #4.5
+
+signal candy_increased(amount: int)
+
+
+func _ready() -> void:
+	GameManager.got_candy.connect(_on_house_got_candy)
+	GameManager.got_tricked.connect(_on_house_got_tricked)
 
 # for handling mouse movement and camera movement
 func _unhandled_input(event: InputEvent) -> void:
@@ -50,3 +58,13 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+	
+	
+func _on_house_got_tricked(house) -> void:
+	print("its working!!!!!!!!!!!!     Got tricker I guess")
+
+func _on_house_got_candy(house) -> void:
+	print("GOT CANDY DAWG NM      its working!!!!!!!!!!!!")
+	candy_amount += 1
+	candy_increased.emit(candy_amount)
+	print(candy_amount)

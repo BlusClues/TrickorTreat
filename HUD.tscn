@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dqyosjh3lyaw4"]
+
+[ext_resource type="Script" uid="uid://cmys23mu43hoq" path="res://HUD.gd" id="1_k5de2"]
+
+[node name="HUD" type="Node2D" unique_id=153936241]
+script = ExtResource("1_k5de2")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2131260209]
+follow_viewport_enabled = true
+
+[node name="CandyLabel" type="RichTextLabel" parent="CanvasLayer" unique_id=711801473]
+offset_left = 24.0
+offset_top = 1.0
+offset_right = 184.0
+offset_bottom = 98.0
+theme_override_font_sizes/normal_font_size = 52
+theme_override_font_sizes/bold_font_size = 52
+text = "10"
