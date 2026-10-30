@@ -1,22 +1,47 @@
 extends Node3D
 
 @onready var knock_trigger = $KnockTrigger
-# @onready var candy_curve = preload("res://CandyCurve.tres")
+@onready var porch_light = $PorchLight
 
 var knocked: bool = false
 var player_in_range: bool = false
 var scariness: float = 0.0
+var base_light_energy = 1.5
+var flicker_amount = 0.8
+var flicker_speed = 16
+var flicker_light = false
+var offset = randf() * 100.0
+var time = 0.0
+var glass_material: StandardMaterial3D
 
 const MIN_CANDY = 1
 const MAX_CANDY = 5
 const CANDY_SPREAD = 0.8
+const GLASS_MATERIAL_INDEX = 1
 
 # connect the functions to each of the houses
 func _ready() -> void:
 	# Connect the area signals
 	knock_trigger.body_entered.connect(_on_knock_trigger_body_entered)
 	knock_trigger.body_exited.connect(_on_knock_trigger_body_exited)
+	
+	var glass = porch_light.get_node("lamp")
+	glass_material = glass.get_active_material(GLASS_MATERIAL_INDEX).duplicate()
+	glass.set_surface_override_material(GLASS_MATERIAL_INDEX, glass_material)
 
+
+func _process(delta: float) -> void:
+	if scariness > 0.7:
+		var gap_threshold = randf_range(0.1, 0.9)
+		var gap_speed = randf_range(0.1, 0.5)
+		# var gap_speed = 0.5
+		time += delta * flicker_speed
+		var t = time + offset
+		var light = porch_light.get_node("OmniLight3D")
+		var gate = clamp(sin(time * gap_speed + offset) - gap_threshold, 0.0, 1.0)
+		var flicker_energy = base_light_energy * (1.0 + flicker_amount * sin(t) * sin(t * 2.3) * gate)
+		light.light_energy = flicker_energy
+		glass_material.emission_energy_multiplier = flicker_energy
 
 # Handle the knock at the door
 func _unhandled_input(event: InputEvent) -> void:
@@ -24,6 +49,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		if event.is_action_pressed("knock") and player_in_range:
 			knocked = true
 			knocked_at_door()
+			print(scariness)
 
 
 # Checking what happens at the door when you knock

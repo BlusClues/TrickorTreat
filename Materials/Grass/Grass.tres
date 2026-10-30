@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dar81pdhjde1i"]
+
+[ext_resource type="Texture2D" uid="uid://jaks5oj5u8lf" path="res://Materials/Grass/Poliigon_GrassPatchyGround_4585_BaseColor.jpg" id="1_1kdpb"]
+[ext_resource type="Texture2D" uid="uid://cp6c8vasvnyui" path="res://Materials/Grass/Poliigon_GrassPatchyGround_4585_AmbientOcclusion.jpg" id="2_7pds0"]
+[ext_resource type="Texture2D" uid="uid://c0a45rbjmb86d" path="res://Materials/Grass/Poliigon_GrassPatchyGround_4585_Metallic.jpg" id="3_73sls"]
+[ext_resource type="Texture2D" uid="uid://bw31fyuuaa184" path="res://Materials/Grass/Poliigon_GrassPatchyGround_4585_Normal.png" id="4_wtqln"]
+[ext_resource type="Texture2D" uid="uid://cpwc0vnepq0ye" path="res://Materials/Grass/Poliigon_GrassPatchyGround_4585_Roughness.jpg" id="5_0unol"]
+
+[resource]
+albedo_texture = ExtResource("1_1kdpb")
+metallic = 1.0
+metallic_texture = ExtResource("3_73sls")
+roughness_texture = ExtResource("5_0unol")
+normal_enabled = true
+normal_texture = ExtResource("4_wtqln")
+ao_enabled = true
+ao_texture = ExtResource("2_7pds0")
+uv1_scale = Vector3(200, 200, 200)

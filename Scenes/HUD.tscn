@@ -16,3 +16,12 @@ offset_bottom = 98.0
 theme_override_font_sizes/normal_font_size = 52
 theme_override_font_sizes/bold_font_size = 52
 text = "10"
+
+[node name="CandyLabel2" type="RichTextLabel" parent="CanvasLayer" unique_id=1756310053]
+offset_left = 14.0
+offset_top = 52.0
+offset_right = 174.0
+offset_bottom = 149.0
+theme_override_font_sizes/normal_font_size = 52
+theme_override_font_sizes/bold_font_size = 52
+text = "+10"

@@ -3,11 +3,14 @@
 [ext_resource type="Script" uid="uid://b53tnul1e87w6" path="res://Scripts/Road.gd" id="1_6iu8i"]
 [ext_resource type="Material" uid="uid://c35gckwfqc8dq" path="res://Materials/Street/Road.tres" id="1_kfjey"]
 [ext_resource type="PackedScene" uid="uid://c28odqqbbuqb2" path="res://Art/StreetLight.tscn" id="2_y2mm7"]
+[ext_resource type="Material" uid="uid://caspidyuvr2mo" path="res://Materials/Sidewalk/Sidewalk.tres" id="3_u5guk"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_dx7jg"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_v1iyc"]
 data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jioyu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y2mm7"]
 
@@ -17,22 +20,22 @@ script = ExtResource("1_6iu8i")
 [node name="HouseSpots" type="Node3D" parent="." unique_id=1137932638]
 
 [node name="HouseSpot1" type="Node3D" parent="HouseSpots" unique_id=1401220899]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 25, 0, 15)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 15, 0, 15)
 
 [node name="HouseSpot2" type="Node3D" parent="HouseSpots" unique_id=516152534]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 15)
 
 [node name="HouseSpot3" type="Node3D" parent="HouseSpots" unique_id=847949374]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -25, 0, 15)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -15, 0, 15)
 
 [node name="HouseSpot4" type="Node3D" parent="HouseSpots" unique_id=872837451]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -15)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -15)
 
 [node name="HouseSpot5" type="Node3D" parent="HouseSpots" unique_id=196582093]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15)
 
 [node name="HouseSpot6" type="Node3D" parent="HouseSpots" unique_id=1844803640]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, -15)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -15)
 
 [node name="Pavement" type="MeshInstance3D" parent="." unique_id=680987619]
 transform = Transform3D(25, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
@@ -44,11 +47,21 @@ mesh = SubResource("PlaneMesh_dx7jg")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Pavement/StaticBody3D" unique_id=507477334]
 shape = SubResource("ConcavePolygonShape3D_v1iyc")
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pavement" unique_id=2108722337]
+transform = Transform3D(1.0000004, 0, 0, 0, 1, 0, 0, 0, 0.1, 0, 0.1, 0.8996229)
+material_override = ExtResource("3_u5guk")
+mesh = SubResource("PlaneMesh_jioyu")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Pavement" unique_id=696000673]
+transform = Transform3D(1.0000005, 0, 0, 0, 1, 0, 0, 0, 0.1, 0, 0.1, -0.9069651)
+material_override = ExtResource("3_u5guk")
+mesh = SubResource("PlaneMesh_jioyu")
+
 [node name="StreetLight" parent="." unique_id=392874260 instance=ExtResource("2_y2mm7")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17, 0.75, -8.006)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17, 0.8, -8.006)
 
 [node name="StreetLight2" parent="." unique_id=1622951204 instance=ExtResource("2_y2mm7")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 17, 0.75, 8)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 17, 0.8, 8)
 
 [node name="SpawnTrigger" type="Area3D" parent="." unique_id=452186220]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.517205, 0)

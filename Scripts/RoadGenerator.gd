@@ -118,9 +118,10 @@ func spawn_object():
 		print("house ", global_index, " scariness: ", house_scariness)
 		
 		var allowed_list = get_allowed_decor(house_scariness)
-		var fill_chance = lerp(0.3, 1.0, house_scariness)		
+		var fill_chance = lerp(0.3, 1.0, house_scariness)
+		var decor_node = new_house.get_node("Decor")
 
-		for item in new_house.get_node("Decor").get_children():
+		for item in decor_node.get_children():
 			# Leave spot empty
 			if rng.randf() > fill_chance:
 				continue
@@ -135,7 +136,7 @@ func spawn_object():
 			new_decor.position = item.position
 			new_decor.rotation = item.rotation
 			new_decor.scale *= scale_factor
-			new_house.add_child(new_decor)
+			decor_node.add_child(new_decor)
 	
 	new_road.house_list = current_house_list
 	
@@ -348,7 +349,7 @@ func save_noise_strips(seed_to_use : int = 7, count : int = 120, scary_cutoff : 
 
 			# red bar under houses above the cutoff
 			if value > scary_cutoff:
-				img.fill_rect(Rect2i(i * cell, y0 + row_height - 6, cell, 6), Color.RED)
+				img.fill_rect(Rect2i(i * cell, y0 + row_height - 6, cell, 6), Color.BLUE)
 
 	var path = "user://noise_strips.png"
 	img.save_png(path)

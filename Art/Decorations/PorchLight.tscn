@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dnpwj2wrqlr1h"]
+
+[ext_resource type="PackedScene" uid="uid://be7a3q1r4wdwo" path="res://Materials/Decorations/Porch Light/Wall_Lamp.fbx" id="1_hny2q"]
+[ext_resource type="Texture2D" uid="uid://6pk0gdqqn7h" path="res://Materials/Decorations/Porch Light/normal.png" id="1_ku4hh"]
+[ext_resource type="Texture2D" uid="uid://n1pc4idjk737" path="res://Materials/Decorations/Porch Light/roughness.png" id="2_hny2q"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jfie2"]
+albedo_color = Color(0, 0, 0, 1)
+roughness_texture = ExtResource("2_hny2q")
+normal_enabled = true
+normal_texture = ExtResource("1_ku4hh")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g8fay"]
+emission_enabled = true
+emission = Color(1, 0.7058824, 0.3529412, 1)
+emission_energy_multiplier = 1.5
+
+[node name="PorchLight" unique_id=1139568753 instance=ExtResource("1_hny2q")]
+
+[node name="lamp" parent="." index="0" unique_id=2054855023]
+surface_material_override/0 = SubResource("StandardMaterial3D_jfie2")
+surface_material_override/1 = SubResource("StandardMaterial3D_g8fay")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="1" unique_id=1830116285]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9927645, 0)
+light_color = Color(1, 0.7058824, 0.3529412, 1)
+light_energy = 1.5
+omni_attenuation = 1.5

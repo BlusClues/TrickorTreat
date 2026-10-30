@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cjx85wig80opt"]
 
+[ext_resource type="Material" uid="uid://dar81pdhjde1i" path="res://Materials/Grass/Grass.tres" id="1_ta7yg"]
 [ext_resource type="PackedScene" uid="uid://b1oo0wom0sdsp" path="res://Scenes/Player.tscn" id="2_tcpt8"]
 [ext_resource type="PackedScene" uid="uid://cugknsn0esml5" path="res://Art/Decorations/Pumpkins/Pumpkin1.tscn" id="5_v1iyc"]
 [ext_resource type="PackedScene" uid="uid://b38sinaurv84o" path="res://Art/Decorations/Pumpkins/Pumpkin2.tscn" id="6_1u2j8"]
@@ -10,8 +11,14 @@
 [ext_resource type="PackedScene" uid="uid://d22pjn6cr7n0c" path="res://Art/tree.glb" id="17_6fvla"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kpbgp"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+sky_top_color = Color(0.019607844, 0.039215688, 0.12156863, 1)
+sky_horizon_color = Color(0.101960786, 0.1254902, 0.2509804, 1)
+sky_energy_multiplier = 0.3
+ground_bottom_color = Color(0.101960786, 0.1254902, 0.2509804, 1)
+ground_horizon_color = Color(0.101960786, 0.1254902, 0.2509804, 1)
+ground_energy_multiplier = 0.3
+sun_angle_max = 15.0
+sun_curve = 0.050000686
 
 [sub_resource type="Sky" id="Sky_7iaks"]
 sky_material = SubResource("ProceduralSkyMaterial_kpbgp")
@@ -19,11 +26,10 @@ sky_material = SubResource("ProceduralSkyMaterial_kpbgp")
 [sub_resource type="Environment" id="Environment_hno7y"]
 background_mode = 2
 sky = SubResource("Sky_7iaks")
+ambient_light_color = Color(1.1792034e-06, 0, 0.45278287, 1)
+ambient_light_energy = 0.3
 tonemap_mode = 2
 glow_enabled = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wne8h"]
-albedo_color = Color(0.35726002, 0.49760896, 0.009832149, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_wne8h"]
 
@@ -36,13 +42,14 @@ data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0
 environment = SubResource("Environment_hno7y")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=352635518]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
-visible = false
+transform = Transform3D(0.49999997, -0.5566704, 0.663414, 0, 0.76604444, 0.6427876, -0.86602545, -0.32139376, 0.3830222, 0, 0, 0)
+light_color = Color(0.80980384, 0.8571753, 0.9999979, 1)
+light_energy = 0.1
 shadow_enabled = true
 
 [node name="Plane" type="MeshInstance3D" parent="." unique_id=126746878]
 transform = Transform3D(1000, 0, 0, 0, 1000, 0, 0, 0, 1000, 0, -0.05, 0)
-material_override = SubResource("StandardMaterial3D_wne8h")
+material_override = ExtResource("1_ta7yg")
 mesh = SubResource("PlaneMesh_wne8h")
 metadata/_edit_lock_ = true
 
