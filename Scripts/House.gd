@@ -74,6 +74,7 @@ func calc_candy_amount() -> int:
 func _on_knock_trigger_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		player_in_range = true
+		GameManager.can_knock.emit()
 		print("entered door")
 
 
@@ -83,3 +84,4 @@ func _on_knock_trigger_body_exited(body: Node3D) -> void:
 		print("door exited")
 		player_in_range = false
 		knocked = false
+		GameManager.cant_knock.emit()

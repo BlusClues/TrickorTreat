@@ -25,3 +25,11 @@ offset_bottom = 149.0
 theme_override_font_sizes/normal_font_size = 52
 theme_override_font_sizes/bold_font_size = 52
 text = "+10"
+
+[node name="KnockLabel" type="RichTextLabel" parent="CanvasLayer" unique_id=569201481]
+offset_left = 469.0
+offset_top = 287.0
+offset_right = 738.0
+offset_bottom = 332.0
+theme_override_font_sizes/normal_font_size = 32
+text = "Press E to knock"

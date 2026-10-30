@@ -11,6 +11,7 @@ extends Node3D
 @onready var decoration2 = preload("res://Art/Decorations/Pumpkins/Pumpkin2.tscn")
 @onready var decoration3 = preload("res://Art/Decorations/Blood.tscn")
 @onready var decoration4 = preload("res://Art/Decorations/Skull.tscn")
+@onready var road_decor1 = preload("res://Art/FireHydrant.tscn")
 
 @export var road_length = 50.0
 @export var roads_each_side = 3
@@ -93,11 +94,27 @@ func spawn_object():
 	#add it to the active game world tree
 	add_child(new_road)
 	
+	## add decorations to the street
+	var street_decor = new_road.get_node("RoadDecor").get_children()
+	var hydrant_placed = false
+	
+	for decor in street_decor:
+		if randf() > 0.5:
+			if hydrant_placed == false:
+				var decor_model = road_decor1 #change later if I add more later
+				var new_decor = decor_model.instantiate()
+				new_decor.position = decor.position
+				new_decor.rotation = decor.rotation
+				new_road.add_child(new_decor)
+				hydrant_placed = true
+			else:
+				continue	
+	
 	#make a list for each of the houses on that segment
 	var current_house_list = []
 	var spots = new_road.get_node("HouseSpots").get_children()
 	
-	# add houses to the street
+	## add houses to the street
 	for spot_index in spots.size():
 		var spot = spots[spot_index]
 		
@@ -110,7 +127,7 @@ func spawn_object():
 		new_house.rotation = spot.rotation
 		new_road.add_child(new_house)
 		
-		#Add the house scariness and add it to the list
+		##Add the house scariness and add it to the list
 		var global_index = new_road.id * spots.size() + spot_index
 		var house_scariness = blue_scariness(global_index)
 		current_house_list.append(house_scariness)
@@ -121,6 +138,7 @@ func spawn_object():
 		var fill_chance = lerp(0.3, 1.0, house_scariness)
 		var decor_node = new_house.get_node("Decor")
 
+		## add decorations to the houses
 		for item in decor_node.get_children():
 			# Leave spot empty
 			if rng.randf() > fill_chance:

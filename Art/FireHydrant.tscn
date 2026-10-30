@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://p443odcn6vqa"]
+
+[ext_resource type="PackedScene" uid="uid://d18c2lsagdpft" path="res://Materials/Decorations/Fire Hydrant/Hydrant_LOD0.fbx" id="1_5w00k"]
+[ext_resource type="Texture2D" uid="uid://qud6sjb6vqf4" path="res://Materials/Decorations/Fire Hydrant/Hydrant_BaseColor.png" id="2_j1437"]
+[ext_resource type="Texture2D" uid="uid://b4hg427mqvkjd" path="res://Materials/Decorations/Fire Hydrant/Hydrant_AmbientOclusion.png" id="3_7pii0"]
+[ext_resource type="Texture2D" uid="uid://d3gp2aw7ndr3v" path="res://Materials/Decorations/Fire Hydrant/Hydrant_Metallic.png" id="4_dqden"]
+[ext_resource type="Texture2D" uid="uid://djo2xxddjqfs6" path="res://Materials/Decorations/Fire Hydrant/Hydrant_Normal.png" id="5_rrn31"]
+[ext_resource type="Texture2D" uid="uid://bda1khe3xuux7" path="res://Materials/Decorations/Fire Hydrant/Hydrant_Roughness.png" id="6_1orfb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_327bj"]
+albedo_texture = ExtResource("2_j1437")
+metallic = 1.0
+metallic_texture = ExtResource("4_dqden")
+roughness_texture = ExtResource("6_1orfb")
+normal_enabled = true
+normal_texture = ExtResource("5_rrn31")
+ao_enabled = true
+ao_texture = ExtResource("3_7pii0")
+
+[node name="FireHydrant" unique_id=676145831 instance=ExtResource("1_5w00k")]
+
+[node name="Hydrant_LOD0" parent="." index="0" unique_id=967180939]
+transform = Transform3D(1.5, 0, 0, 0, -6.556708e-08, 1.5, 0, -1.5, -6.556708e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_327bj")

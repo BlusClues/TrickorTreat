@@ -70,4 +70,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.517205, 0)
 transform = Transform3D(1, 0, 0, 0, 20, 0, 0, 0, 50, 16.909302, 0.8472762, 0)
 shape = SubResource("BoxShape3D_y2mm7")
 
+[node name="RoadDecor" type="Node3D" parent="." unique_id=1366033216]
+
+[node name="RoadDecor1" type="Node3D" parent="RoadDecor" unique_id=1720638168]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.433151, 0, -8.420211)
+
+[node name="RoadDecor2" type="Node3D" parent="RoadDecor" unique_id=693366862]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -23.433151, 0, 8.471568)
+
 [connection signal="body_entered" from="SpawnTrigger" to="." method="_on_spawn_trigger_body_entered"]

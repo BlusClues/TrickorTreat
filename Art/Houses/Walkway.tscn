@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bmi8nu85t2lmq"]
+
+[ext_resource type="Material" uid="uid://jpbm053llnv2" path="res://Materials/Sidewalk/HousePath.tres" id="1_fo151"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_52b11"]
+
+[node name="Walkway" type="Node3D" unique_id=1194207816]
+transform = Transform3D(0.18117264, 0, 0, 0, 0.18117264, 0, 0, 0, 0.18117264, 0, -0.03, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1655048373]
+transform = Transform3D(7, 0, 0, 0, 0.99999994, 0, 0, 0, 12, 8.135679, 0, 17.567093)
+mesh = SubResource("PlaneMesh_52b11")
+surface_material_override/0 = ExtResource("1_fo151")

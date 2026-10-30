@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://jpbm053llnv2"]
+
+[ext_resource type="Texture2D" uid="uid://c8fwxlx3tjjh2" path="res://Materials/Sidewalk/Poliigon_ConcretePaversSquare_7100_BaseColor.jpg" id="1_rtf2a"]
+[ext_resource type="Texture2D" uid="uid://coy85pji80qiq" path="res://Materials/Sidewalk/Poliigon_ConcretePaversSquare_7100_AmbientOcclusion.jpg" id="2_77jyp"]
+[ext_resource type="Texture2D" uid="uid://p07k2dbbc8bu" path="res://Materials/Sidewalk/Poliigon_ConcretePaversSquare_7100_Metallic.jpg" id="3_8dxbu"]
+[ext_resource type="Texture2D" uid="uid://cv5md1fo5b1v3" path="res://Materials/Sidewalk/Poliigon_ConcretePaversSquare_7100_Normal.png" id="4_ps7lv"]
+[ext_resource type="Texture2D" uid="uid://c656qyydjedwr" path="res://Materials/Sidewalk/Poliigon_ConcretePaversSquare_7100_Roughness.jpg" id="5_cq4mk"]
+
+[resource]
+albedo_texture = ExtResource("1_rtf2a")
+metallic = 1.0
+metallic_texture = ExtResource("3_8dxbu")
+roughness_texture = ExtResource("5_cq4mk")
+normal_enabled = true
+normal_texture = ExtResource("4_ps7lv")
+ao_enabled = true
+ao_texture = ExtResource("2_77jyp")
+uv1_scale = Vector3(1, 2, 5)

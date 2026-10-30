@@ -2,6 +2,8 @@ extends Node
 
 signal got_tricked(house_node)
 signal got_candy(house_node, candy_amount)
+signal can_knock()
+signal cant_knock()
 
 
 ## This file is set to auto load meaning it is available in every scene
