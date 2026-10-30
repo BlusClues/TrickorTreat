@@ -92,23 +92,7 @@ func spawn_object():
 	new_road.position = Vector3(new_road.id * road_length, 0, 0)
 
 	#add it to the active game world tree
-	add_child(new_road)
-	
-	## add decorations to the street
-	var street_decor = new_road.get_node("RoadDecor").get_children()
-	var hydrant_placed = false
-	
-	for decor in street_decor:
-		if randf() > 0.5:
-			if hydrant_placed == false:
-				var decor_model = road_decor1 #change later if I add more later
-				var new_decor = decor_model.instantiate()
-				new_decor.position = decor.position
-				new_decor.rotation = decor.rotation
-				new_road.add_child(new_decor)
-				hydrant_placed = true
-			else:
-				continue	
+	add_child(new_road)	
 	
 	#make a list for each of the houses on that segment
 	var current_house_list = []
@@ -157,6 +141,22 @@ func spawn_object():
 			decor_node.add_child(new_decor)
 	
 	new_road.house_list = current_house_list
+
+	## add decorations to the street
+	var street_decor = new_road.get_node("RoadDecor").get_children()
+	var hydrant_placed = false
+
+	for decor in street_decor:
+		if rng.randf() > 0.5:
+			if hydrant_placed == false:
+				var decor_model = road_decor1 #change later if I add more later
+				var new_decor = decor_model.instantiate()
+				new_decor.position = decor.position
+				new_decor.rotation = decor.rotation
+				new_road.add_child(new_decor)
+				hydrant_placed = true
+			else:
+				continue
 	
 
 # return the allowed list of decorations that can spawn at houses

@@ -55,6 +55,7 @@ func _unhandled_input(event: InputEvent) -> void:
 # Checking what happens at the door when you knock
 func knocked_at_door():
 	if knocked:
+		GameManager.has_been_knocked.emit(knocked)
 		if scariness > 0.5:
 			if randf() < scariness:
 				GameManager.got_tricked.emit(self)
@@ -70,11 +71,13 @@ func calc_candy_amount() -> int:
 	var amount = roundi(randfn(target, CANDY_SPREAD))
 	return clampi(amount, MIN_CANDY, MAX_CANDY)
 
+
 # check if the player has entered the door range
 func _on_knock_trigger_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		player_in_range = true
-		GameManager.can_knock.emit()
+		GameManager.in_range.emit()
+		GameManager.has_been_knocked.emit(knocked)
 		print("entered door")
 
 
@@ -83,5 +86,5 @@ func _on_knock_trigger_body_exited(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		print("door exited")
 		player_in_range = false
-		knocked = false
-		GameManager.cant_knock.emit()
+		# knocked = false
+		GameManager.out_range.emit()
