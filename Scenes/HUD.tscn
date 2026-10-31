@@ -1,14 +1,39 @@
 [gd_scene format=3 uid="uid://dqyosjh3lyaw4"]
 
 [ext_resource type="Script" uid="uid://cmys23mu43hoq" path="res://Scripts/HUD.gd" id="1_k5de2"]
+[ext_resource type="AudioStream" uid="uid://d4j1l3l1vmbti" path="res://Sounds/DoorKnock.wav" id="2_jo1ms"]
+[ext_resource type="AudioStream" uid="uid://51gnlwxytply" path="res://Sounds/KidTrickorTreat.wav" id="3_psnte"]
+[ext_resource type="AudioStream" uid="uid://bexd741864jsd" path="res://Sounds/KidTrickorTreat2.wav" id="4_s3jbq"]
+[ext_resource type="AudioStream" uid="uid://ct43ijivguc7j" path="res://Sounds/Jumpscare.wav" id="5_c3eba"]
+[ext_resource type="AudioStream" uid="uid://ch84x18m2g0eu" path="res://Sounds/Crickets.wav" id="6_g8s2e"]
 
 [node name="HUD" type="Node2D" unique_id=153936241]
+process_mode = 3
 script = ExtResource("1_k5de2")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2131260209]
 follow_viewport_enabled = true
 
-[node name="CandyLabel" type="RichTextLabel" parent="CanvasLayer" unique_id=711801473]
+[node name="NormalGameControl" type="Control" parent="CanvasLayer" unique_id=1784941448]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TrickFlash" type="ColorRect" parent="CanvasLayer/NormalGameControl" unique_id=1880037580]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 28.850002
+anchor_bottom = 16.175001
+offset_right = -0.00012207031
+offset_bottom = -6.1035156e-05
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.6901961, 0, 0, 1)
+
+[node name="CandyLabel" type="RichTextLabel" parent="CanvasLayer/NormalGameControl" unique_id=711801473]
+layout_mode = 0
 offset_left = 24.0
 offset_top = 1.0
 offset_right = 184.0
@@ -17,7 +42,8 @@ theme_override_font_sizes/normal_font_size = 52
 theme_override_font_sizes/bold_font_size = 52
 text = "10"
 
-[node name="CandyLabel2" type="RichTextLabel" parent="CanvasLayer" unique_id=1756310053]
+[node name="CandyLabel2" type="RichTextLabel" parent="CanvasLayer/NormalGameControl" unique_id=1756310053]
+layout_mode = 0
 offset_left = 14.0
 offset_top = 52.0
 offset_right = 174.0
@@ -26,7 +52,8 @@ theme_override_font_sizes/normal_font_size = 52
 theme_override_font_sizes/bold_font_size = 52
 text = "+10"
 
-[node name="KnockLabel" type="RichTextLabel" parent="CanvasLayer" unique_id=569201481]
+[node name="KnockLabel" type="RichTextLabel" parent="CanvasLayer/NormalGameControl" unique_id=569201481]
+layout_mode = 0
 offset_left = 469.0
 offset_top = 287.0
 offset_right = 738.0
@@ -34,7 +61,8 @@ offset_bottom = 332.0
 theme_override_font_sizes/normal_font_size = 32
 text = "Press E to knock"
 
-[node name="TimerLabel" type="RichTextLabel" parent="CanvasLayer" unique_id=1111654965]
+[node name="TimerLabel" type="RichTextLabel" parent="CanvasLayer/NormalGameControl" unique_id=1111654965]
+layout_mode = 0
 offset_left = 1026.0
 offset_top = 6.0
 offset_right = 1160.0
@@ -42,5 +70,91 @@ offset_bottom = 82.0
 theme_override_font_sizes/normal_font_size = 52
 text = "3:00"
 
+[node name="TrickedLabel" type="RichTextLabel" parent="CanvasLayer/NormalGameControl" unique_id=512104928]
+layout_mode = 0
+offset_left = 427.0
+offset_top = 193.0
+offset_right = 769.0
+offset_bottom = 320.0
+theme_override_font_sizes/normal_font_size = 32
+text = "You were tricked!
+-20 candy was stolen!"
+horizontal_alignment = 1
+
+[node name="GameOverControl" type="Control" parent="CanvasLayer" unique_id=1857074483]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GameOverScreen" type="ColorRect" parent="CanvasLayer/GameOverControl" unique_id=1287191072]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 28.800001
+anchor_bottom = 16.150002
+offset_bottom = -6.1035156e-05
+color = Color(0.35686275, 0.35686275, 0.35686275, 0.4627451)
+
+[node name="TotalCandyEnd" type="RichTextLabel" parent="CanvasLayer/GameOverControl" unique_id=607850449]
+layout_mode = 0
+offset_left = 304.0
+offset_top = 293.0
+offset_right = 835.0
+offset_bottom = 343.0
+theme_override_font_sizes/normal_font_size = 32
+text = "Total Amount of Candy : 100"
+horizontal_alignment = 1
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/GameOverControl" unique_id=84903321]
+layout_mode = 0
+offset_left = 463.0
+offset_top = 442.0
+offset_right = 679.0
+offset_bottom = 499.0
+theme_override_font_sizes/font_size = 32
+text = "Quit
+"
+
+[node name="RetryButton" type="Button" parent="CanvasLayer/GameOverControl" unique_id=14266391]
+layout_mode = 0
+offset_left = 463.0
+offset_top = 369.0
+offset_right = 679.0
+offset_bottom = 426.0
+theme_override_font_sizes/font_size = 32
+text = "Retry
+"
+
+[node name="GameOverLabel" type="RichTextLabel" parent="CanvasLayer/GameOverControl" unique_id=516668413]
+layout_mode = 0
+offset_left = 322.0
+offset_top = 116.0
+offset_right = 819.0
+offset_bottom = 343.0
+theme_override_font_sizes/normal_font_size = 56
+text = "Night Over!
+Time to go home!"
+horizontal_alignment = 1
+
 [node name="Timer" type="Timer" parent="." unique_id=1912094383]
 wait_time = 180.0
+
+[node name="DoorKnock" type="AudioStreamPlayer" parent="." unique_id=243448340]
+stream = ExtResource("2_jo1ms")
+
+[node name="KidTrickOrTreat" type="AudioStreamPlayer" parent="." unique_id=81657621]
+stream = ExtResource("3_psnte")
+volume_db = -1.0
+
+[node name="KidTrickOrTreat2" type="AudioStreamPlayer" parent="." unique_id=545227504]
+stream = ExtResource("4_s3jbq")
+
+[node name="Jumpscare" type="AudioStreamPlayer" parent="." unique_id=1534567745]
+stream = ExtResource("5_c3eba")
+
+[node name="Crickets" type="AudioStreamPlayer" parent="." unique_id=325139346]
+stream = ExtResource("6_g8s2e")
+
+[connection signal="pressed" from="CanvasLayer/GameOverControl/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/GameOverControl/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

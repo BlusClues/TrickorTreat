@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="TrickorTreat"
-run/main_scene="res://Street.tscn"
+run/main_scene="uid://6ehk6wk3i84s"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://Materials/icon.svg"
 

@@ -55,7 +55,18 @@ func _unhandled_input(event: InputEvent) -> void:
 # Checking what happens at the door when you knock
 func knocked_at_door():
 	if knocked:
+		# hiding prompt
 		GameManager.has_been_knocked.emit(knocked)
+		GameManager.just_knocked.emit()
+		
+		# create a delay when knocking at a door
+		var wait_time = randf_range(1.0, 2.5)
+		await get_tree().create_timer(wait_time).timeout
+		
+		# if has been culled out
+		if not is_inside_tree():
+			return
+		
 		if scariness > 0.5:
 			if randf() < scariness:
 				GameManager.got_tricked.emit(self)

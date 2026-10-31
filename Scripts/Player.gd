@@ -6,10 +6,11 @@ extends CharacterBody3D
 var sprint_speed = 1
 var candy_amount = 0
 
-const SPEED = 5.0
-const JUMP_VELOCITY = 10 #4.5
+const SPEED = 8.0
+const JUMP_VELOCITY = 4.5
 
 signal candy_increased(amount: int)
+signal was_tricked(amount: int) 
 
 
 func _ready() -> void:
@@ -42,7 +43,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 	
 	if Input.is_action_just_pressed("sprint"):
-		sprint_speed = 10
+		sprint_speed = 2
 	
 	if Input.is_action_just_released("sprint"):
 		sprint_speed = 1
@@ -62,6 +63,11 @@ func _physics_process(delta: float) -> void:
 	
 func _on_house_got_tricked(house) -> void:
 	print("its working!!!!!!!!!!!!     Got tricker I guess")
+	var lost_amount = candy_amount / 2
+	candy_amount -= lost_amount
+	candy_increased.emit(candy_amount)
+	was_tricked.emit(lost_amount)
+	print(lost_amount)
 
 func _on_house_got_candy(house, amount_given) -> void:
 	print("GOT CANDY DAWG NM      its working!!!!!!!!!!!!")

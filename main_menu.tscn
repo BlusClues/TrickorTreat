@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://6ehk6wk3i84s"]
+
+[ext_resource type="Script" uid="uid://rl2agyubgt2" path="res://main_menu.gd" id="1_06t4h"]
+
+[node name="MainMenu" type="Node2D" unique_id=31572748]
+script = ExtResource("1_06t4h")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=223462952]
+offset_right = 1161.0
+offset_bottom = 660.0
+color = Color(0.16924527, 0.1692453, 0.16924527, 1)
+
+[node name="Title" type="RichTextLabel" parent="." unique_id=429561013]
+offset_left = 340.0
+offset_top = 120.0
+offset_right = 1165.0
+offset_bottom = 277.0
+theme_override_font_sizes/normal_font_size = 68
+text = "Knock Knock"
+
+[node name="Instruction" type="RichTextLabel" parent="." unique_id=475424505]
+offset_left = 410.0
+offset_top = 240.0
+offset_right = 678.0
+offset_bottom = 337.0
+text = "Get as much candy as you can before the night runs out. But make sure you avoid scary houses..."
+horizontal_alignment = 1
+
+[node name="StartButton" type="Button" parent="." unique_id=1186439770]
+offset_left = 472.0
+offset_top = 351.0
+offset_right = 611.0
+offset_bottom = 404.0
+theme_override_font_sizes/font_size = 32
+text = "Start"
+
+[node name="QuitButton" type="Button" parent="." unique_id=488462323]
+offset_left = 475.0
+offset_top = 424.0
+offset_right = 612.0
+offset_bottom = 477.0
+theme_override_font_sizes/font_size = 32
+text = "Quit
+"
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

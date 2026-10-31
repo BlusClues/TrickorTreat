@@ -25,6 +25,11 @@ ambient_light_color = Color(1.1792034e-06, 0, 0.45278287, 1)
 ambient_light_energy = 0.3
 tonemap_mode = 2
 glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(0.101960786, 0.1254902, 0.1882353, 1)
+fog_density = 0.02
+fog_sky_affect = 0.2
+volumetric_fog_density = 0.0184
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_wne8h"]
 
@@ -63,3 +68,4 @@ metadata/_edit_lock_ = true
 [node name="HUD" parent="." unique_id=153936241 instance=ExtResource("8_r4x5s")]
 
 [connection signal="candy_increased" from="Player" to="HUD" method="_on_player_candy_increased"]
+[connection signal="was_tricked" from="Player" to="HUD" method="_on_player_was_tricked"]
